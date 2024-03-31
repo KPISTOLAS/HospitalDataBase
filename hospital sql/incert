@@ -1,0 +1,89 @@
+//EMPLOYEE AND PATIENT TABLE
+
+INSERT INTO Employee (Idnum, Name, Specialization, Phone, Email, Address)
+VALUES
+    (1, 'John Doe', 'Doctor', '123-456-7890', 'john@example.com', '123 Main St'),
+    (2, 'Jane Smith', 'Nurse', '987-654-3210', 'jane@example.com', '456 Elm St'),
+    (3, 'Emily Johnson', 'Surgeon', '555-123-4567', 'emily@example.com', '789 Oak St'),
+    (4, 'Michael Wilson', 'Pediatrician', '321-654-9870', 'michael@example.com', '101 Pine St'),
+    (5, 'Samantha Lee', 'Anesthesiologist', '444-789-1234', 'samantha@example.com', '222 Maple St');
+
+
+INSERT INTO Patient (PId, Name, Phone, IdDoc)
+VALUES
+    (1, 'Alice Johnson', '111-222-3333', 1),
+    (2, 'Bob Williams', '444-555-6666', 1),
+    (3, 'Charlie Brown', '777-888-9999', 3),
+    (4, 'David Garcia', '555-222-3333', 4),
+    (5, 'Emma Martinez', '666-777-8888', 5),
+    (6, 'James Rodriguez', '999-111-2222', 1);
+
+// WORKPLACE
+
+INSERT INTO Workplace (Idnum, DepID)
+VALUES
+    (1, 101), 
+    (2, 103),  
+    (3, 102),
+    (4,104),
+    (5,105),
+    (6,106);
+
+//DEPARTMENT TABLES
+
+INSERT INTO Departments (DepID, Dhead)
+VALUES
+    (101, 1),  
+    (102, 1),  
+    (103, 3),
+    (104, 4),  
+    (105, 5),  
+    (106, 4);
+    
+INSERT INTO block (Bcode, DepID, Βfloor, Bname)
+VALUES
+    (001, 101, 1, 'A Block'),
+    (002, 102, 2, 'B Block'),
+    (003, 103, 1, 'C Block'),
+    (004, 104, 2, 'D Block')
+    (005, 105, 1, 'E Block'),
+    (006, 106, 2, 'F Block'),
+    (007, 101, 3, 'G Block');
+
+
+INSERT INTO room (Bcode, Available, Type, PId)
+VALUES
+    (201, 'Y', 'Single', NULL),  
+    (202, 'N', 'Double', 1),  
+    (202, 'N', 'Double', 6),  
+    (203, 'Y', 'Single', 5),
+    (204, 'Y', 'Single', 3), 
+    (205, 'N', 'Double', 2),
+    (206, 'Y', 'Single', NULL); 
+
+
+//medicine   
+
+
+INSERT INTO Appointment (ApId, PId, Idnum, ADate)
+VALUES
+    (1, 1, 1, '2024-04-01 10:00:00'), 
+    (2, 2, 2, '2024-04-02 14:30:00'),  
+    (3, 3, 3, '2024-04-03 11:15:00');  
+
+
+
+
+INSERT INTO Prescription (ApId, MedId, Dose)
+VALUES
+    (1, 1, '1 pill daily'), 
+    (2, 2, '2 pills twice a day'), 
+    (3, 3, 'As needed');  
+
+
+INSERT INTO MEDICATION (MedId, name, brand, description)
+VALUES
+    (1, 'Paracetamol', 'Panadol', 'Pain reliever and fever reducer'),
+    (2, 'Ibuprofen', 'Advil', 'Nonsteroidal anti-inflammatory drug (NSAID)'),
+    (3, 'Amoxicillin', NULL, 'Antibiotic used to treat bacterial infections');
+

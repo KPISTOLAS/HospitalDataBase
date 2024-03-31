@@ -1,0 +1,85 @@
+//EMPLOYEE AND PATIENT TABLE
+
+CREATE TABLE Employee (
+    Idnum NUMBER NOT NULL,
+    Name VARCHAR(50),
+    Specialization VARCHAR(50),
+    Phone VARCHAR(15),
+    Email VARCHAR(100),
+    Address VARCHAR(255),
+    PRIMARY KEY (Idnum)
+);
+
+CREATE TABLE Patient (
+    PId NUMBER NOT NULL,
+    Name VARCHAR(50),
+    Phone VARCHAR(15),
+    IdDoc NUMBER NOT NULL,
+    PRIMARY KEY (PId),
+    FOREIGN KEY (IdDoc) REFERENCES Employee(Idnum)
+);
+
+// WORKPLACE
+
+CREATE TABLE Workplace (
+    Idnum NUMBER NOT NULL,
+    DepID NUMBER NOT NULL,
+    FOREIGN KEY (Idnum) REFERENCES Employee(Idnum),
+    FOREIGN KEY (DepID) REFERENCES Departments(DepID)
+);
+
+//DEPARTMENT TABLES
+
+CREATE TABLE Departments (
+    DepID NUMBER NOT NULL,
+    Dhead NUMBER NOT NULL,
+    PRIMARY KEY (DepID),
+    FOREIGN KEY (Dhead) REFERENCES Employee(Idnum)
+);
+
+CREATE TABLE block (
+    Bcode INTEGER NOT NULL,
+    DepID NUMBER NOT NULL,
+    Βfloor INTEGER NOT NULL,
+    Bname VARCHAR2(25),
+    PRIMARY KEY (Bcode),
+    FOREIGN KEY (DepID) REFERENCES Departments(DepID)
+);
+
+CREATE TABLE room (
+    Bcode INTEGER NOT NULL,
+    Available CHAR(1) NOT NULL,
+    Type VARCHAR2(6) NOT NULL,
+    PId INTEGER,
+    FOREIGN KEY (Bcode) REFERENCES block(Bcode),
+    FOREIGN KEY (PId) REFERENCES Patient(PId)
+);
+
+//medicine   
+
+CREATE TABLE Appointment (
+    ApId   NUMBER  NOT NULL,
+    PId NUMBER NOT NULL,
+    Idnum NUMBER NOT NULL,
+    ADate VARCHAR(20) NOT NULL,
+    PRIMARY KEY (ApId),
+    FOREIGN KEY (PId) REFERENCES Patient(PId),
+    FOREIGN KEY (Idnum) REFERENCES Employee(Idnum)
+);
+
+CREATE TABLE Prescription (
+    ApId   NUMBER  NOT NULL,
+    MedId INTEGER  NOT NULL,
+    Dose VARCHAR(20) NOT NULL,
+    FOREIGN KEY (ApId) REFERENCES Appointment(ApId),
+    FOREIGN KEY (MedId) REFERENCES MEDICATION(MedId)
+);
+
+CREATE TABLE MEDICATION (
+    MedId INTEGER NOT NULL,
+    name VARCHAR(13) NOT NULL,
+    brand VARCHAR(23),
+    description VARCHAR(30) NOT NULL,
+    PRIMARY KEY (MedId)
+);
+
